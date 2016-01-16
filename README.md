@@ -1,2 +1,3 @@
-# map672
-Modules for NMP MAP672 course.
+# Logan's map672
+
+I'm excited to learn all of these different programs.
