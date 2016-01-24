@@ -5,33 +5,101 @@
     <meta charset=utf-8 />
     <title>MAP672 Module 2 Template</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
     <style>
-        /* CSS style rules go here! */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #d0e4fe;
+            font-family: sans-serif;
+            color: #3d3d3d;
+        }
+/*        This gives the headings specific size and margin location on the webpage*/
+        h1 {
+            font-size: 1.6em;
+            margin-left: 25px;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin-left: 25px;
+        }
+        p {
+            font-size: 1em;
+            margin: 15px 25px;
+            max-width: 800px;
+        }
+        a {
+            color: #ff4d4d;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            margin-left: 25px;
+        }
+/*        These CSS rules give specific diameters for the size of the circles and the box, as well as the color and margin location on the webpage.*/
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #3e6b94;
+            margin: 25px;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            background: #bf6864;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 25px;
+        }
         
     </style>
 </head>
 
 <body>
-<!-- Structured HTML goes within the body tags -->
     
-    <h1>heading 1</h1>
-    <h2>heading 2</h2>
-    <p>paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus.</p>
-    <img src="images/world.png" alt="world map">
+<!-- Title to the webpage -->
+    <h1>The Online Globe</h1>
+    <h2>A Discussion of Mapping in the New World of the Internet</h2>
+    <p>The excerpt from A History of Spaces: Cartographic Reason, Mapping and the Geo-Coded World makes me think both of the history and future of cartography. In the past, the making of a map was done with what they believed at the time. Maps in the past, were not always the most accurate drawings that were completed; however, it was done to what they knew and believed. They drew their lines, showing borders to their kingdoms and points for places of importance. That is what their world was known as. These maps were created in a 2 dimensional perspective. In the present and in the future, maps have became 3 dimensional. Not only can we see a flat map that shows the world, but we can zoom in and see the height of mountains and buildings. While looking at the map on the webpage, it shows the earth as it is known, a round lump of mass, instead of a flat land mass. All of this technology in mapping can give the perspective that is given in the excerpt of a God's eye of view. With today's maps we can see everything and in every way. For more fun with technology, visit <a href="https://baconipsum.com/">The bacon ipsum generator.</a></p>
+    <img src="images/world2.png" alt="world map">
+<!--    This weblink shows in the HTML; however, in the webpage it provides the user a link without showing the URL, so there is a seemless path for the reader.-->
     <p>paragraph with link: <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl.</p>
     <ul>
-        <li>un-ordered list item 1</li>
-        <li>list item 2</li>
-        <li>list item 3</li>
+        <li><a href="http://leafletjs.com/"> Leaflet</a></li>
+        <li><a href="https://www.mapbox.com/"> Mapbox</a></li>
+        <li><a href="https://cartodb.com/"> CartoDB</a></li>
+        <li><a href="http://d3js.org/"> Data-Driven Documents</a></li>
+        <li><a href="http://www.esri.com/"> Esri</a></li>
+        <li><a href="http://www.gmtgis.com/"> Geographic Mapping Technologies, Corp.</a></li>
     </ul>
+<!-- The div selects an element that can be manipulated at a later time with JS or CSS    -->
     <div id="box"></div>
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
-
+    <div id="map"></div>
+<!-- The JS code beneath gives specific elements unique characteristics and interaction with the user-->
     <script>
-        // JavaScript code goes here  
+        document.querySelector('h1').innerHTML = 'web mapping is sweet!';
+        var box = document.getElementById('box');
+        box.style.background = '#4d4a9f';
+        var elements = document.getElementsByClassName('circle');
+            
+        for(var i=0; i <= elements.lenght-1;i++){
+            elements[i].style['border-radius'] = '20%';
+        }
+        box.addEventListener('click', function() {
+            this.style.width = '400px';
+        });
+        var newListItem = document.createElement('li');
+        newListItem.innerHTML = "list item 4";
+        document.querySelector('ul').appendChild(newListItem);
+        console.log("hello map");
+
         
     </script>
     
