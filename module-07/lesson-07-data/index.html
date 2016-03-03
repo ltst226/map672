@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Lesson 07 Template</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {
+            width: 80%;
+            height: 540px;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Map Title</h1>
+        <h2>Map Subtitle</h2>
+    </header>
+
+    <div id='map'></div>
+
+    <footer>
+        <p>Map authored by YOUR NAME</p>
+        <p>Additional information about the data and map goes here.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl.
+        </p>
+    </footer>
+
+    <script>
+        
+       var mapCenter = L.latLng(38.0489, -96.5025);
+       /* var otherCity = L.latLng(38.1489, -96.5125);
+        var distance = mapCenter.distanceTo(otherCity);
+        console.log(distance);*/
+        var options = {
+            center: [38.0489, -96.5025],
+            zoom: 4,
+            minZoom: 4,
+            maxZoom: 13,
+            dragging: false,
+            zoomControl: false
+        }
+        
+          /*  map.on('click', function(e) {
+            console.log(e.latlng);
+        });*/
+        
+        var map = L.map('map');
+        map.setView([40.7718,-111.9124], 13);
+        
+        var tiles = L.tileLayer('http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}', {
+	maxZoom: 20,
+	attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+        map.addLayer(tiles);
+        
+/*        var center = map.getCenter();
+        console.log(center.lat, center.lng);
+        var zoom = map.getZoom();
+        console.log(zoom);
+        var bounds = map.getBounds();
+        var bottomLeft = bounds.getSouthWest();
+        console.log(bottomLeft.lat, bottomLeft.lng);
+        console.log(bounds);*/
+        //L.marker([38.0297, -84.4947]).addTo(map);
+        //var redIguanaLocation = L.latLng(40.7718, -111.9124);
+       /* var redIguanaMarker = L.marker (redIguanaLocation, {
+            draggable: true,
+        });
+        redIguanaMarker.addTo(map);
+        redIguanaMarker.on('drag', function(e) {
+            console.log(e.target.getLatLng());
+        });*/
+        //redIguanaMarker.bindPopup("Best Mexican food in Salt Lake City!");
+       // var redIguanaCircle = L.circle(redIguanaLocation, 400);
+        //redIguanaCircle.addTo(map);
+        
+ /*       var blueBirdLocation = L.latLng(38.0230, -94.0250);
+        var blueBirdCircle = L.circle(blueBirdLocation, 1000);
+        blueBirdCircle.addTo(map);
+        var yellowBirdLocation = L.latLng(40.0584, -84.4947);
+        var yellowBirdCircle = L.circle(yellowBirdLocation, 100000, {
+            color: "#ffff00",
+            fillColor: "ffff00",
+        });
+        yellowBirdCircle.addTo(map);
+        var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaCircle = L.circle(redIguanaLocation, 400, {
+            color: "#d72b1e",  
+            fillColor: "#d72b1e" 
+        });*/
+/*        redIguanaCircle.addTo(map);
+        redIguanaCircle.setStyle({
+            color: "#d72b1e", 
+            weight: 15, 
+            fillColor: "#d72b1e",  
+            fillOpacity: 1  
+        });*/
+/*        var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaCircle = L.circle();
+        redIguanaCircle.setLatLng(redIguanaLocation);
+        redIguanaCircle.setRadius(400);
+        redIguanaCircle.addTo(map);*/
+        /*var iguanaRestaurants = L.layerGroup();
+        var redIguana = L.circle([40.7718,-111.9124], 400);
+        redIguana.addTo(iguanaRestaurants);
+        var blueIguana = L.circle([40.7657, -111.8930], 300);
+        blueIguana.addTo(iguanaRestaurants);
+        iguanaRestaurants.addTo(map);
+        
+        iguanaRestaurants.eachLayer(function(layer) {
+           layer.on('mouseover', function(e) {
+               e.target.setStyle({
+                   color: 'yellow',
+                   fillColor: 'yellow'
+               });
+           });
+            layer.on('mouseout', function(e) {
+                e.target.setStyle({
+                    color: '#03f',
+                    fillColr: '#03f'
+                });
+            });
+        });*/
+        
+/*        var iguanaRestaurants = L.layerGroup();
+        var redIguanaOptions = {
+            color: 'red',
+            fillColor: 'red'
+        };
+        var blueIguanaOptions = {
+            color: '#03f',
+            fillColor: '#03f',
+        };
+        var redIguana = L.circle([40.7718, -111.9124], 400, redIguanaOptions);
+        redIguana.color = 'red';
+        redIguana.addTo(iguanaRestaurants);
+        var blueIguana = L.circle([40.7657, -111.8930], 300, blueIguanaOptions);
+        blueIguana.color = 'blue',
+        blueIguana.addTo(iguanaRestaurants);
+        iguanaRestaurants.addTo(map);
+        
+        iguanaRestaurants.eachLayer(function(layer) {
+            layer.on('mouseover' , function(e) {
+                e.target.setStyle({
+                    color: 'yellow',
+                    fillColor: 'yellow'
+                });
+            });
+            layer.on('mouseout', function(e) {
+                if(e.target.color == 'red') {
+                    e.target.setStyle(redIguanaOptions);
+                } else if (e.target.color == 'blue') {
+                    e.target.setStyle(blueIguanaOptions);
+                }
+            });
+        });*/
+                  
+    </script>
+    
+</body>
+
+</html>
