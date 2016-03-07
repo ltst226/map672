@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Lesson 08 Template</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {
+            width: 80%;
+            height: 540px;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>New Zealand</h1>
+        <h2>The 4 Cities with the Largest Mass</h2>
+    </header>
+
+    <div id='map'></div>
+
+    <footer>
+        <p>Map authored by Logan Steele</p>
+        <p>Data gathered from Wikipedia and Google Search engine.</p>
+    </footer>
+
+    <script>
+
+     /* {
+          "type": "Feature",
+          "geometry": {
+              "type": "Point",
+              "coordinates": [125.6, 10.1]
+          },
+          "properties": {
+              "name": "Dinagat Islands"
+          }
+      }*/
+        
+    var places = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Auckland",
+        "Size": 1085
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          174.7265625,
+          -36.77409249464194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Chirstchurch",
+        "Size": 1427
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          172.6171875,
+          -43.45291889355465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Wellington",
+        "Size": 290
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          174.814453125,
+          -41.211721510547875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Hamilton",
+        "Size": 98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          175.25390624999997,
+          -37.77071473849609
+        ]
+      }
+    }
+  ]
+}
+    var map = L.map('map', {
+        center: [-41, 175],
+        zoom: 5
+    });
+    
+    var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    });
+    tiles.addTo(map);
+        
+    var placesLeaflet = L.geoJson(places, {
+        pointToLayer: function(feature, latlng) {
+            //console.log(feature);
+            return L.circle(latlng, feature.properties.Size*100);
+        }
+    }).addTo(map);
+    //console.log(places);
+    //console.log(placesLeaflet);
+        
+    
+                  
+    </script>
+    
+</body>
+
+</html>
