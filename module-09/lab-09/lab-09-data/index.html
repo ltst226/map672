@@ -113,7 +113,7 @@
         }).addTo(map);
         map.on('click', function(e) {
         for(var layer in layerInfo) {
-        geoJsonLayers[layer].eachLayer(function(layer, feature) {
+        geoJsonLayers[layer].eachLayer(function(layer, source) {
             var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
             
             if(distance > 500) {
